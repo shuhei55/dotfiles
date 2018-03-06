@@ -1,0 +1,15 @@
+[user]
+    name = shuhei takamatsu
+    email = takamatushuhei55@docomo.ne.jp
+[http]
+    sslVerify = False
+[credential]
+    helper = cache
+[push]
+    default = simple
+    recurseSubmodules = check
+[alias]
+    sgl = log --oneline --graph --all --decorate
+    st = status
+    cm = commit
+    difff = diff --word-diff    

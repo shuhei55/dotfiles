@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/shuhei/RoboTech/voyager/pc/parser'
+let g:netrw_dirhist_2='/home/shuhei/RoboTech/sprc2018_c/pc/init'
+let g:netrw_dirhist_3='/home/shuhei/RoboTech/sprc2018_c/gaia/init'
+let g:netrw_dirhist_4='/home/shuhei/RoboTech/libcway/gaia'
+let g:netrw_dirhist_5='/home/shuhei/RoboTech/cpp_lecture/chess/include'
+let g:netrw_dirhist_6='/home/shuhei/RoboTech/sprc2018_c/pc/shell'
