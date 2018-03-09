@@ -10,11 +10,30 @@ set cursorline
 set smartindent
 set showmatch
 
+"自動で閉じ括弧を入力
+"imap { {}<LEFT>
+"imap [ []<LEFT>
+"imap ( ()<LEFT>
+
 "キーマッピング
 noremap <S-h>  ^
 noremap <S-j>  }
 noremap <S-k>  {
 noremap <S-l>  $
+
+"最後のカーソル位置を復元する
+if has("autocmd")
+    autocmd BufReadPost *
+    \if line("'\"") > 0 && line ("'\"") <= line("$")
+    \  exe "normal! g'\"" |
+    \ endif
+endif
+
+"vimshell
+"noremap :sh :VimShell
+
+"NERDTree
+noremap <silent><C-t> :NERDTree<CR>
 
 "clang-format"
 autocmd BufWrite,FileWritePre,FileAppendPre *.[ch]pp :ClangFormat
@@ -51,13 +70,29 @@ NeoBundle 'Shougo/vimproc.vim', {
 			\     'unix' : 'gmake',
             \    },
             \ }
-NeoBundle 'Shougo/vimshell'
+"NeoBundle 'Shougo/vimshell' vim中にshellを使える
+NeoBundle 'mattn/sonictemplate-vim' "テンプレートプログラムが使えるようになる
+let g:sonictemplate_vim_template_dir = ['~/.vim/template']
+
+NeoBundle 'simeji/winresizer' "<C-e> でサイズ変更
+let g:winresizer_vert_resize = 1
+let g:winresizer_horiz_resize = 1
+
+NeoBundle 'scrooloose/nerdtree' "<C-t>でツリー表示
+NeoBundle 'thinca/vim-quickrun' "vimを閉じずに実行
+NeoBundle 'tomtom/tcomment_vim' "複数行のコメントアウト
+NeoBundle 'tomasr/molokai' "color
+NeoBundle 'sjl/badwolf'
+NeoBundle 'w0ng/vim-hybrid'
 
 " NeoBundle 'itchyny/lightline.vim'
 " NeoBundle 'taketwo/vim-ros'
 
 
 call neobundle#end()
+
+"color
+colorscheme molokai
 
 " Required:
 filetype plugin indent on
