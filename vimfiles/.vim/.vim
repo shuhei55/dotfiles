@@ -1,0 +1,1 @@
+/home/shuhei/dotfiles/vimfiles/.vim

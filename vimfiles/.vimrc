@@ -1,14 +1,19 @@
 "普通の
-set expandtab
+set title "タイトル表示
+set expandtab "タブ系
 set tabstop=4
 set shiftwidth=4
-set ignorecase
+set ignorecase "検索で大文字小文字を区別しない（小文字のときはせず、大文字のときはする）
 set smartcase
-set background=dark
-set number
-set cursorline
-set smartindent
-set showmatch
+set background=dark "暗くする
+set number "行番号をふる
+set cursorline "カーソルの行がわかる！
+set smartindent "自動でインデント
+"set showmatch "対応する括弧がわかる！(このversionでは効かない)
+"set matchtime=1
+let loaded_matchparen = 1 "対応するのを表示しない
+"Shift-uで対応へ移動
+noremap <S-u> %
 
 "自動で閉じ括弧を入力
 "imap { {}<LEFT>
@@ -20,14 +25,17 @@ noremap <S-h>  ^
 noremap <S-j>  }
 noremap <S-k>  {
 noremap <S-l>  $
+nnoremap <C-m> :<C-u>tabnew<CR> "タブを開くよ
+nnoremap <C-n> gt "タブを動くよ
+nnoremap <C-N> gT "タブを動くよ
+
 
 "最後のカーソル位置を復元する
-if has("autocmd")
-    autocmd BufReadPost *
-    \if line("'\"") > 0 && line ("'\"") <= line("$")
-    \  exe "normal! g'\"" |
-    \ endif
-endif
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
+
 
 "vimshell
 "noremap :sh :VimShell
@@ -79,11 +87,25 @@ let g:winresizer_vert_resize = 1
 let g:winresizer_horiz_resize = 1
 
 NeoBundle 'scrooloose/nerdtree' "<C-t>でツリー表示
-NeoBundle 'thinca/vim-quickrun' "vimを閉じずに実行
+let NERDTreeShowHidden = 1 "不可視ファイルの表示
+NeoBundle 'jistr/vim-nerdtree-tabs' "タブ間でツリー共有
+NeoBundle 'Xuyuanp/nerdtree-git-plugin' "ツリーに変更を表示
+
+NeoBundle 'Yggdroot/indentLine' "インデントの深さがわかる！
+
+"NeoBundle 'thinca/vim-quickrun' "vimを閉じずに実行
 NeoBundle 'tomtom/tcomment_vim' "複数行のコメントアウト
+NeoBundle 'rhysd/accelerated-jk' "カーソルの移動速度アップ
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
+
+NeoBundle 'vim-airline/vim-airline' "かっこいい
+let g:airline#extensions#tabline#enabled = 1 "タブバーも
+
 NeoBundle 'tomasr/molokai' "color
-NeoBundle 'sjl/badwolf'
-NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'sjl/badwolf' "color
+NeoBundle 'w0ng/vim-hybrid' "color
+NeoBundle 'joshdick/onedark.vim' "color
 
 " NeoBundle 'itchyny/lightline.vim'
 " NeoBundle 'taketwo/vim-ros'
@@ -92,7 +114,7 @@ NeoBundle 'w0ng/vim-hybrid'
 call neobundle#end()
 
 "color
-colorscheme molokai
+colorscheme onedark
 
 " Required:
 filetype plugin indent on

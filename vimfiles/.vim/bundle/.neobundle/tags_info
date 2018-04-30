@@ -1,10 +1,15 @@
+accelerated-jk
 badwolf
+indentLine
 molokai
 neobundle.vim
 nerdtree
+nerdtree-git-plugin
+onedark.vim
 sonictemplate-vim
 tcomment_vim
+vim-airline
 vim-hybrid
-vim-quickrun
+vim-nerdtree-tabs
 vimproc.vim
 winresizer
